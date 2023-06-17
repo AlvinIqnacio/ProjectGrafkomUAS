@@ -22,6 +22,8 @@ import textures.ModelTexture;
 import entities.Camera;
 import entities.Entity;
 import entities.Light;
+import textures.TerainTexture;
+import textures.TerainTexturePack;
 
 public class MainGameLoop {
 
@@ -72,9 +74,18 @@ public class MainGameLoop {
 		}
 		
 		Light light = new Light(new Vector3f(20000,20000,2000),new Vector3f(1,1,1));
-		
-		Terrain terrain = new Terrain(0,-1,loader,new ModelTexture(loader.loadTexture("grass")));
-		Terrain terrain2 = new Terrain(-1,-1,loader,new ModelTexture(loader.loadTexture("grass")));
+
+		TerainTexture backgroundTexture = new TerainTexture(loader.loadTexture("grassy"));
+		TerainTexture rTexture = new TerainTexture(loader.loadTexture("dirt"));
+		TerainTexture gTexture = new TerainTexture(loader.loadTexture("pinkFlowers"));
+		TerainTexture bTexture = new TerainTexture(loader.loadTexture("path"));
+
+
+		TerainTexturePack texturePack = new TerainTexturePack(backgroundTexture,rTexture,gTexture,bTexture);
+		TerainTexture blendMap = new TerainTexture(loader.loadTexture("blendMap"));
+
+		Terrain terrain = new Terrain(0,-1,loader,texturePack, blendMap);
+		Terrain terrain2 = new Terrain(-1,-1,loader,texturePack,blendMap);
 
 		Camera camera = new Camera();	
 		MasterRenderer renderer = new MasterRenderer();
