@@ -21,7 +21,7 @@ public class Terrain {
 	public Terrain(int gridX, int gridZ, Loader loader, TerainTexturePack texturePack, TerainTexture blendMap){
 		this.texturePack = texturePack;
 		this.blendMap = blendMap;
-		this.x = gridX * SIZE-100;
+		this.x = gridX * SIZE;
 		this.z = gridZ * SIZE;
 		this.model = generateTerrain(loader);
 	}

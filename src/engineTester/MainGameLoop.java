@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import entities.Player;
 import models.RawModel;
 import models.TexturedModel;
 
@@ -34,6 +35,8 @@ public class MainGameLoop {
 
 		ModelData polyTreeData = OBJFileLoader.loadOBJ("lowPolyTree");
 		ModelData treeData = OBJFileLoader.loadOBJ("tree");
+		ModelData playerData = OBJFileLoader.loadOBJ("person");
+
 
 
 		RawModel tree1Model = loader.loadToVAO(
@@ -48,6 +51,11 @@ public class MainGameLoop {
 				treeData.getNormals(),
 				treeData.getIndices());
 
+		RawModel personModel = loader.loadToVAO(
+				playerData.getVertices(),
+				playerData.getTextureCoords(),
+				playerData.getNormals(),
+				playerData.getIndices());
 
 		TexturedModel tree = new TexturedModel(treeModel,new ModelTexture(loader.loadTexture("tree")));
 		TexturedModel tree1 = new TexturedModel(tree1Model,new ModelTexture(loader.loadTexture("lowPolyTree")));
@@ -56,6 +64,9 @@ public class MainGameLoop {
 				new ModelTexture(loader.loadTexture("grassTexture")));
 		TexturedModel fern = new TexturedModel(OBJLoader.loadObjModel("fern",loader),
 				new ModelTexture(loader.loadTexture("fern")));
+		TexturedModel person = new TexturedModel(personModel,new ModelTexture(loader.loadTexture("playerTexture")));
+
+
 		grass.getTexture().setHasTranparacy(true);
 		grass.getTexture().setUseFakeLighting(true);
 		fern.getTexture().setHasTranparacy(true);
@@ -64,12 +75,12 @@ public class MainGameLoop {
 		
 		List<Entity> entities = new ArrayList<Entity>();
 		Random random = new Random();
-		for(int i=0;i<200;i++){
-			entities.add(new Entity(tree, new Vector3f(random.nextFloat()*800 - 800,0,random.nextFloat() * -600),0,0,0,5));
-			entities.add(new Entity(tree1, new Vector3f(random.nextFloat()*800 - 400,0,random.nextFloat() * -600),0,0,0,0.5f));
+		for(int i=0;i<100;i++){
+			entities.add(new Entity(tree, new Vector3f(random.nextFloat()*800,0,random.nextFloat() * -800),0,0,0,10));
+			entities.add(new Entity(tree1, new Vector3f(random.nextFloat()*800 - 800,0,random.nextFloat() * -800),0,0,0,1f));
 
-			entities.add(new Entity(grass, new Vector3f(random.nextFloat()*800 - 400,0,random.nextFloat() * -600),0,0,0,1));
-			entities.add(new Entity(fern, new Vector3f(random.nextFloat()*800 - 400,0,random.nextFloat() * -600),0,0,0,0.6f));
+			entities.add(new Entity(grass, new Vector3f(random.nextFloat()*800 - 800,0,random.nextFloat() * -800),0,0,0,1));
+			entities.add(new Entity(fern, new Vector3f(random.nextFloat()*800,0,random.nextFloat() * -800),0,0,0,0.6f));
 
 		}
 		
@@ -87,12 +98,18 @@ public class MainGameLoop {
 		Terrain terrain = new Terrain(0,-1,loader,texturePack, blendMap);
 		Terrain terrain2 = new Terrain(-1,-1,loader,texturePack,blendMap);
 
-		Camera camera = new Camera();	
+		Player player = new Player(person, new Vector3f(0,0,-50), 0,0,0,1);
+
+		Camera camera = new Camera(player);
 		MasterRenderer renderer = new MasterRenderer();
 		
 		while(!Display.isCloseRequested()){
 			camera.move();
-			
+
+			player.move();
+			System.out.println(player.getPosition().x +" "+player.getPosition().z);
+
+			renderer.processEntity(player);
 			renderer.processTerrain(terrain);
 			renderer.processTerrain(terrain2);
 
