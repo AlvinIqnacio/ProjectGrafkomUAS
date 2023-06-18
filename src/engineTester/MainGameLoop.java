@@ -74,40 +74,48 @@ public class MainGameLoop {
 
 		
 		List<Entity> entities = new ArrayList<Entity>();
-		Random random = new Random();
-		for(int i=0;i<100;i++){
-			entities.add(new Entity(tree, new Vector3f(random.nextFloat()*800,0,random.nextFloat() * -800),0,0,0,10));
-			entities.add(new Entity(tree1, new Vector3f(random.nextFloat()*800 - 800,0,random.nextFloat() * -800),0,0,0,1f));
 
-			entities.add(new Entity(grass, new Vector3f(random.nextFloat()*800 - 800,0,random.nextFloat() * -800),0,0,0,1));
-			entities.add(new Entity(fern, new Vector3f(random.nextFloat()*800,0,random.nextFloat() * -800),0,0,0,0.6f));
 
-		}
 		
 		Light light = new Light(new Vector3f(20000,20000,2000),new Vector3f(1,1,1));
 
-		TerainTexture backgroundTexture = new TerainTexture(loader.loadTexture("grassy"));
-		TerainTexture rTexture = new TerainTexture(loader.loadTexture("dirt"));
+		TerainTexture backgroundTexture = new TerainTexture(loader.loadTexture("grassy2"));
+		TerainTexture rTexture = new TerainTexture(loader.loadTexture("mud"));
 		TerainTexture gTexture = new TerainTexture(loader.loadTexture("pinkFlowers"));
-		TerainTexture bTexture = new TerainTexture(loader.loadTexture("path"));
+		TerainTexture bTexture = new TerainTexture(loader.loadTexture("path2"));
 
 
 		TerainTexturePack texturePack = new TerainTexturePack(backgroundTexture,rTexture,gTexture,bTexture);
 		TerainTexture blendMap = new TerainTexture(loader.loadTexture("blendMap"));
 
-		Terrain terrain = new Terrain(0,-1,loader,texturePack, blendMap);
-		Terrain terrain2 = new Terrain(-1,-1,loader,texturePack,blendMap);
+		Terrain terrain = new Terrain(0,-1,loader,texturePack, blendMap, "heightmap2");
+		Terrain terrain2 = new Terrain(-1,-1,loader,texturePack,blendMap,"heightmap");
 
 		Player player = new Player(person, new Vector3f(0,0,-50), 0,0,0,1);
 
 		Camera camera = new Camera(player);
 		MasterRenderer renderer = new MasterRenderer();
+
+		for(int i=0;i<100;i++){
+
+
+			entities.add(new Entity(tree, randomPlacementEntity(terrain,terrain2), 0,0,0,10));
+			entities.add(new Entity(tree1, randomPlacementEntity(terrain,terrain2), 0,0,0,1f));
+
+			entities.add(new Entity(grass, randomPlacementEntity(terrain,terrain2), 0,0,0,1));
+			entities.add(new Entity(fern, randomPlacementEntity(terrain,terrain2), 0,0,0,0.6f));
+		}
 		
 		while(!Display.isCloseRequested()){
-			camera.move();
 
-			player.move();
-			System.out.println(player.getPosition().x +" "+player.getPosition().z);
+			if (player.getPosition().x>0){
+				camera.move(terrain);
+				player.move(terrain);
+			}else {
+				camera.move(terrain2);
+				player.move(terrain2);
+			}
+//			System.out.println(player.getPosition().x +" "+player.getPosition().z);
 
 			renderer.processEntity(player);
 			renderer.processTerrain(terrain);
@@ -124,6 +132,19 @@ public class MainGameLoop {
 		loader.cleanUp();
 		DisplayManager.closeDisplay();
 
+	}
+
+	private static Vector3f randomPlacementEntity(Terrain terrain, Terrain terrain2){
+		Random random = new Random();
+		float x = random.nextFloat()*1600 -800;
+		float z = random.nextFloat() * -800;
+		float y;
+		if (x>0){
+			y = terrain.getHeightOfTerain(x,z);
+		}else {
+			y = terrain2.getHeightOfTerain(x,z);
+		}
+		return new Vector3f(x,y,z);
 	}
 
 }

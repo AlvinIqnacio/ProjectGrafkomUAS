@@ -3,6 +3,7 @@ package entities;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.util.vector.Vector3f;
+import terrains.Terrain;
 
 public class Camera {
 
@@ -23,7 +24,7 @@ public class Camera {
 		this.player = player;
 	}
 	
-	public void move(){
+	public void move(Terrain terrain){
 		calculateZoom();
 		calculatePitch();
 		calculateAngleAroundPlayer();
@@ -31,8 +32,9 @@ public class Camera {
 		float verticalDistance =calculateVerticallDistance();
 		calculateCameraPosition(horizontalDistance,verticalDistance);
 		this.yaw = 180 - (player.getRotY()+angelFromPlayer);
-		if (position.y<0){
-			position.y = 1;
+
+		if (position.y<terrain.getHeightOfTerain(position.x,position.z)){
+			position.y = terrain.getHeightOfTerain(position.x,position.z) + 1;
 		}
 
 
