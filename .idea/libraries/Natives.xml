@@ -3,14 +3,14 @@
     <CLASSES />
     <JAVADOC />
     <NATIVE>
-      <root url="file://$PROJECT_DIR$/../../../../../LWJGL Lib/Lib/Natives" />
-      <root url="file://$PROJECT_DIR$/../../../../../LWJGL Lib/Lib/Natives" />
-      <root url="file://$PROJECT_DIR$/../../../../../LWJGL Lib/Lib/Natives" />
-      <root url="file://$PROJECT_DIR$/../../../../../LWJGL Lib/Lib/Natives" />
-      <root url="file://$PROJECT_DIR$/../../../../../LWJGL Lib/Lib/Natives" />
-      <root url="file://$PROJECT_DIR$/../../../../../LWJGL Lib/Lib/Natives" />
-      <root url="file://$PROJECT_DIR$/../../../../../LWJGL Lib/Lib/Natives" />
-      <root url="file://$PROJECT_DIR$/../../../../../LWJGL Lib/Lib/Natives" />
+      <root url="file://$PROJECT_DIR$/Lib/Natives" />
+      <root url="file://$PROJECT_DIR$/Lib/Natives" />
+      <root url="file://$PROJECT_DIR$/Lib/Natives" />
+      <root url="file://$PROJECT_DIR$/Lib/Natives" />
+      <root url="file://$PROJECT_DIR$/Lib/Natives" />
+      <root url="file://$PROJECT_DIR$/Lib/Natives" />
+      <root url="file://$PROJECT_DIR$/Lib/Natives" />
+      <root url="file://$PROJECT_DIR$/Lib/Natives" />
     </NATIVE>
     <SOURCES />
   </library>

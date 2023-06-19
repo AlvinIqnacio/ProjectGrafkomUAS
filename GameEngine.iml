@@ -7,9 +7,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="lwjgl" level="project" />
+    <orderEntry type="library" name="lwjgl_util" level="project" />
     <orderEntry type="library" name="Natives" level="project" />
-    <orderEntry type="library" name="lwjgl-assimp-natives-windows-arm64" level="project" />
+    <orderEntry type="library" name="slick-util (1)" level="project" />
     <orderEntry type="library" name="PNGDecoder" level="project" />
+    <orderEntry type="library" name="lwjgl assimp" level="project" />
   </component>
 </module>
