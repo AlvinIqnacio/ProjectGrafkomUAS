@@ -10,5 +10,6 @@
     <orderEntry type="library" name="lwjgl" level="project" />
     <orderEntry type="library" name="Natives" level="project" />
     <orderEntry type="library" name="lwjgl-assimp-natives-windows-arm64" level="project" />
+    <orderEntry type="library" name="PNGDecoder" level="project" />
   </component>
 </module>

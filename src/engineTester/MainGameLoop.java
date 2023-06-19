@@ -40,16 +40,7 @@ public class MainGameLoop {
 		ModelData polyTreeData = OBJFileLoader.loadOBJ("lowPolyTree");
 		ModelData treeData = OBJFileLoader.loadOBJ("pine");
 		ModelData playerData = OBJFileLoader.loadOBJ("person");
-		ModelData marioData = OBJFileLoader.loadOBJ("mario");
 
-
-		RawModel marioModel = loader.loadToVAO(
-				marioData.getVertices(),
-				marioData.getTextureCoords(),
-				marioData.getNormals(),
-				marioData.getIndices());
-
-		TexturedModel mario = new TexturedModel(marioModel,new ModelTexture(loader.loadTexture("img")));
 
 
 		RawModel tree1Model = loader.loadToVAO(
@@ -97,13 +88,8 @@ public class MainGameLoop {
 		
 		List<Entity> entities = new ArrayList<Entity>();
 
-		mario.getTexture().setHasTranparacy(false);
-		entities.add(new Entity(mario,new Vector3f(0,0,0),0,0,0,20));
-
-
-
 		List<Light> lights = new ArrayList<>();
-		lights.add(new Light(new Vector3f(0,10000,-7000),new Vector3f(0.7f,0.7f,0.7f)));
+		lights.add(new Light(new Vector3f(0,10000,-7000),new Vector3f(1f,1f,1f)));
 		lights.add(new Light(new Vector3f(185,8f,-293),new Vector3f(2,0,0),new Vector3f(1,0.01f,0.002f)));
 		lights.add(new Light(new Vector3f(370,17,-300),new Vector3f(0,2,2),new Vector3f(1,0.01f,0.002f)));
 		lights.add(new Light(new Vector3f(293,5,-305),new Vector3f(2,2,0),new Vector3f(1,0.01f,0.002f)));
@@ -127,7 +113,7 @@ public class MainGameLoop {
 		Player player = new Player(person, new Vector3f(0,0,-50), 0,0,0,1);
 
 		Camera camera = new Camera(player);
-		MasterRenderer renderer = new MasterRenderer();
+		MasterRenderer renderer = new MasterRenderer(loader);
 
 		for(int i=0;i<100;i++){
 
@@ -154,7 +140,7 @@ public class MainGameLoop {
 				camera.move(terrain2);
 				player.move(terrain2);
 			}
-			System.out.println(player.getPosition().x +" "+ player.getPosition().y+ " " +player.getPosition().z);
+//			System.out.println(player.getPosition().x +" "+ player.getPosition().y+ " " +player.getPosition().z);
 
 			renderer.processEntity(player);
 			renderer.processTerrain(terrain);
