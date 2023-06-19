@@ -40,7 +40,16 @@ public class MainGameLoop {
 		ModelData polyTreeData = OBJFileLoader.loadOBJ("lowPolyTree");
 		ModelData treeData = OBJFileLoader.loadOBJ("pine");
 		ModelData playerData = OBJFileLoader.loadOBJ("person");
+		ModelData marioData = OBJFileLoader.loadOBJ("mario");
 
+
+		RawModel marioModel = loader.loadToVAO(
+				marioData.getVertices(),
+				marioData.getTextureCoords(),
+				marioData.getNormals(),
+				marioData.getIndices());
+
+		TexturedModel mario = new TexturedModel(marioModel,new ModelTexture(loader.loadTexture("img")));
 
 
 		RawModel tree1Model = loader.loadToVAO(
@@ -60,8 +69,12 @@ public class MainGameLoop {
 				playerData.getTextureCoords(),
 				playerData.getNormals(),
 				playerData.getIndices());
+
+
 		ModelTexture fernTextureAtlas = new ModelTexture(loader.loadTexture("fern"));
 		fernTextureAtlas.setNumberOfRows(2);
+
+
 
 		TexturedModel tree = new TexturedModel(treeModel,new ModelTexture(loader.loadTexture("pine")));
 		TexturedModel tree1 = new TexturedModel(tree1Model,new ModelTexture(loader.loadTexture("lowPolyTree")));
@@ -71,24 +84,33 @@ public class MainGameLoop {
 		TexturedModel fern = new TexturedModel(OBJLoader.loadObjModel("fern",loader),
 				fernTextureAtlas);
 		TexturedModel person = new TexturedModel(personModel,new ModelTexture(loader.loadTexture("playerTexture")));
+		TexturedModel lamp = new TexturedModel(OBJLoader.loadObjModel("lamp",loader),
+				new ModelTexture(loader.loadTexture("lamp")));
 
 
 		grass.getTexture().setHasTranparacy(true);
 		grass.getTexture().setUseFakeLighting(true);
 		fern.getTexture().setHasTranparacy(true);
 		fern.getTexture().setUseFakeLighting(true);
+		lamp.getTexture().setUseFakeLighting(true);
 
 		
 		List<Entity> entities = new ArrayList<Entity>();
 
+		mario.getTexture().setHasTranparacy(false);
+		entities.add(new Entity(mario,new Vector3f(0,0,0),0,0,0,20));
 
-		
-		Light light = new Light(new Vector3f(0,10000,-7000),new Vector3f(1,1,1));
+
+
 		List<Light> lights = new ArrayList<>();
-		lights.add(light);
-		lights.add(new Light(new Vector3f(-200,10,-200),new Vector3f(1,0,0)));
-		lights.add(new Light(new Vector3f(200,10,200),new Vector3f(0,0,1)));
+		lights.add(new Light(new Vector3f(0,10000,-7000),new Vector3f(0.7f,0.7f,0.7f)));
+		lights.add(new Light(new Vector3f(185,8f,-293),new Vector3f(2,0,0),new Vector3f(1,0.01f,0.002f)));
+		lights.add(new Light(new Vector3f(370,17,-300),new Vector3f(0,2,2),new Vector3f(1,0.01f,0.002f)));
+		lights.add(new Light(new Vector3f(293,5,-305),new Vector3f(2,2,0),new Vector3f(1,0.01f,0.002f)));
 
+		entities.add(new Entity(lamp,new Vector3f(185,-4.7f,-293),0,0,0,1));
+		entities.add(new Entity(lamp,new Vector3f(370,4.3f,-300),0,0,0,1));
+		entities.add(new Entity(lamp,new Vector3f(293,-6.8f,-305),0,0,0,1));
 
 		TerainTexture backgroundTexture = new TerainTexture(loader.loadTexture("grassy2"));
 		TerainTexture rTexture = new TerainTexture(loader.loadTexture("mud"));
@@ -132,7 +154,7 @@ public class MainGameLoop {
 				camera.move(terrain2);
 				player.move(terrain2);
 			}
-//			System.out.println(player.getPosition().x +" "+player.getPosition().z);
+			System.out.println(player.getPosition().x +" "+ player.getPosition().y+ " " +player.getPosition().z);
 
 			renderer.processEntity(player);
 			renderer.processTerrain(terrain);
