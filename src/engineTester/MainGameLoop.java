@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import guis.GuiTexture;
+import guis.GuiRenderer;
 import entities.Player;
 import models.RawModel;
 import models.TexturedModel;
@@ -12,6 +14,7 @@ import models.TexturedModel;
 import objConverter.ModelData;
 import objConverter.OBJFileLoader;
 import org.lwjgl.opengl.Display;
+import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 
 import renderEngine.DisplayManager;
@@ -32,9 +35,10 @@ public class MainGameLoop {
 
 		DisplayManager.createDisplay();
 		Loader loader = new Loader();
+		Random random = new Random();
 
 		ModelData polyTreeData = OBJFileLoader.loadOBJ("lowPolyTree");
-		ModelData treeData = OBJFileLoader.loadOBJ("tree");
+		ModelData treeData = OBJFileLoader.loadOBJ("pine");
 		ModelData playerData = OBJFileLoader.loadOBJ("person");
 
 
@@ -56,14 +60,16 @@ public class MainGameLoop {
 				playerData.getTextureCoords(),
 				playerData.getNormals(),
 				playerData.getIndices());
+		ModelTexture fernTextureAtlas = new ModelTexture(loader.loadTexture("fern"));
+		fernTextureAtlas.setNumberOfRows(2);
 
-		TexturedModel tree = new TexturedModel(treeModel,new ModelTexture(loader.loadTexture("tree")));
+		TexturedModel tree = new TexturedModel(treeModel,new ModelTexture(loader.loadTexture("pine")));
 		TexturedModel tree1 = new TexturedModel(tree1Model,new ModelTexture(loader.loadTexture("lowPolyTree")));
 
 		TexturedModel grass = new TexturedModel(OBJLoader.loadObjModel("grassModel",loader),
 				new ModelTexture(loader.loadTexture("grassTexture")));
 		TexturedModel fern = new TexturedModel(OBJLoader.loadObjModel("fern",loader),
-				new ModelTexture(loader.loadTexture("fern")));
+				fernTextureAtlas);
 		TexturedModel person = new TexturedModel(personModel,new ModelTexture(loader.loadTexture("playerTexture")));
 
 
@@ -77,7 +83,12 @@ public class MainGameLoop {
 
 
 		
-		Light light = new Light(new Vector3f(20000,20000,2000),new Vector3f(1,1,1));
+		Light light = new Light(new Vector3f(0,10000,-7000),new Vector3f(1,1,1));
+		List<Light> lights = new ArrayList<>();
+		lights.add(light);
+		lights.add(new Light(new Vector3f(-200,10,-200),new Vector3f(1,0,0)));
+		lights.add(new Light(new Vector3f(200,10,200),new Vector3f(0,0,1)));
+
 
 		TerainTexture backgroundTexture = new TerainTexture(loader.loadTexture("grassy2"));
 		TerainTexture rTexture = new TerainTexture(loader.loadTexture("mud"));
@@ -88,7 +99,7 @@ public class MainGameLoop {
 		TerainTexturePack texturePack = new TerainTexturePack(backgroundTexture,rTexture,gTexture,bTexture);
 		TerainTexture blendMap = new TerainTexture(loader.loadTexture("blendMap"));
 
-		Terrain terrain = new Terrain(0,-1,loader,texturePack, blendMap, "heightmap2");
+		Terrain terrain = new Terrain(0,-1,loader,texturePack, blendMap, "heightmap");
 		Terrain terrain2 = new Terrain(-1,-1,loader,texturePack,blendMap,"heightmap");
 
 		Player player = new Player(person, new Vector3f(0,0,-50), 0,0,0,1);
@@ -99,12 +110,18 @@ public class MainGameLoop {
 		for(int i=0;i<100;i++){
 
 
-			entities.add(new Entity(tree, randomPlacementEntity(terrain,terrain2), 0,0,0,10));
+			entities.add(new Entity(tree, randomPlacementEntity(terrain,terrain2), 0,0,0,2));
 			entities.add(new Entity(tree1, randomPlacementEntity(terrain,terrain2), 0,0,0,1f));
 
 			entities.add(new Entity(grass, randomPlacementEntity(terrain,terrain2), 0,0,0,1));
-			entities.add(new Entity(fern, randomPlacementEntity(terrain,terrain2), 0,0,0,0.6f));
+			entities.add(new Entity(fern,random.nextInt(4) , randomPlacementEntity(terrain,terrain2), 0,0,0,0.6f));
 		}
+
+		List<GuiTexture> guis = new ArrayList<GuiTexture>();
+		GuiTexture gui = new GuiTexture(loader.loadTexture("socuwan"), new Vector2f(0.0f,0.8f), new Vector2f(0.25f,0.25f));
+		guis.add(gui);
+
+		GuiRenderer guiRenderer = new GuiRenderer(loader);
 		
 		while(!Display.isCloseRequested()){
 
@@ -124,10 +141,12 @@ public class MainGameLoop {
 			for(Entity entity:entities){
 				renderer.processEntity(entity);
 			}
-			renderer.render(light, camera);
+			renderer.render(lights, camera);
+			guiRenderer.render(guis);
 			DisplayManager.updateDisplay();
 		}
 
+		guiRenderer.cleanUp();
 		renderer.cleanUp();
 		loader.cleanUp();
 		DisplayManager.closeDisplay();

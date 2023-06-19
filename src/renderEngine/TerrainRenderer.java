@@ -83,4 +83,6 @@ public class TerrainRenderer {
 		shader.loadTransformationMatrix(transformationMatrix);
 	}
 
+
+
 }
