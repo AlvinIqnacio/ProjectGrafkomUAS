@@ -13,7 +13,7 @@ import java.util.List;
 
 public class StaticShader extends ShaderProgram{
 
-	private static final int MAX_LIGHT = 4;
+	private static final int MAX_LIGHT = 20;
 
 	private static final String VERTEX_FILE = "src/shaders/vertexShader.txt";
 	private static final String FRAGMENT_FILE = "src/shaders/fragmentShader.txt";
