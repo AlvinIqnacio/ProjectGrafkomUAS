@@ -1,8 +1,6 @@
 package engineTester;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import guis.GuiTexture;
 import guis.GuiRenderer;
@@ -86,10 +84,10 @@ public class MainGameLoop {
 		lamp.getTexture().setUseFakeLighting(true);
 
 		
-		List<Entity> entities = new ArrayList<Entity>();
+		List<Entity> entities = new ArrayList<>();
 
 		List<Light> lights = new ArrayList<>();
-		lights.add(new Light(new Vector3f(0,10000,-7000),new Vector3f(1f,1f,1f)));
+		lights.add(new Light(new Vector3f(-10000,2000,5),new Vector3f(1.0f,1.0f,1.0f)));
 		lights.add(new Light(new Vector3f(185,8f,-293),new Vector3f(2,0,0),new Vector3f(1,0.01f,0.002f)));
 		lights.add(new Light(new Vector3f(370,17,-300),new Vector3f(0,2,2),new Vector3f(1,0.01f,0.002f)));
 		lights.add(new Light(new Vector3f(293,5,-305),new Vector3f(2,2,0),new Vector3f(1,0.01f,0.002f)));
@@ -110,10 +108,10 @@ public class MainGameLoop {
 		Terrain terrain = new Terrain(0,-1,loader,texturePack, blendMap, "heightmap");
 		Terrain terrain2 = new Terrain(-1,-1,loader,texturePack,blendMap,"heightmap");
 
-		Player player = new Player(person, new Vector3f(0,0,-50), 0,0,0,1);
+		Player player = new Player(person, new Vector3f(100,0,-50), 0,0,0,1);
 
 		Camera camera = new Camera(player);
-		MasterRenderer renderer = new MasterRenderer(loader);
+		MasterRenderer renderer = new MasterRenderer(loader,camera);
 
 		for(int i=0;i<100;i++){
 
@@ -125,12 +123,19 @@ public class MainGameLoop {
 			entities.add(new Entity(fern,random.nextInt(4) , randomPlacementEntity(terrain,terrain2), 0,0,0,0.6f));
 		}
 
+		//gui
 		List<GuiTexture> guis = new ArrayList<GuiTexture>();
 		GuiTexture gui = new GuiTexture(loader.loadTexture("socuwan"), new Vector2f(0.0f,0.8f), new Vector2f(0.25f,0.25f));
-		guis.add(gui);
+//		guis.add(gui);
+
+		GuiTexture shadowMap = new GuiTexture(renderer.getShadowMapTexture(), new Vector2f(0.5f,0.5f),new Vector2f(0.5f,0.5f));
+//		guis.add(shadowMap);
+
 
 		GuiRenderer guiRenderer = new GuiRenderer(loader);
-		
+		entities.add(player);
+
+
 		while(!Display.isCloseRequested()){
 
 			if (player.getPosition().x>0){
@@ -142,6 +147,7 @@ public class MainGameLoop {
 			}
 //			System.out.println(player.getPosition().x +" "+ player.getPosition().y+ " " +player.getPosition().z);
 
+			renderer.renderShadowMap(entities,lights.get(0));
 			renderer.processEntity(player);
 			renderer.processTerrain(terrain);
 			renderer.processTerrain(terrain2);
