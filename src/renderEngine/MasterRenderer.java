@@ -75,7 +75,7 @@ public class MasterRenderer {
 	
 	public void render(List<Light> lights,Camera camera){
 		prepare();
-		time += DisplayManager.getFrameTimeSeconds() * 1000;
+		time += DisplayManager.getFrameTimeSeconds() * 500;
 		time %= 24000;
 
 		if (time>0 && time<5000){
@@ -87,12 +87,12 @@ public class MasterRenderer {
 			z = NIGHT_SUN;
 			lights.get(0).setColour(new Vector3f(x,y,z));
 		}else if (time >= 5000 && time < 8000){
-			RED += (0.5444f - 0.02f)/370;
-			GREEN += (0.62f - 0.03f)/370;
-			BLUE += (0.69f - 0.035f)/370;
-			x += (DAY_SUN-NIGHT_SUN)/350;
-			y += (DAY_SUN-NIGHT_SUN)/350;
-			z +=  (DAY_SUN-NIGHT_SUN)/350;
+			RED += (0.5444f - 0.02f)/740;
+			GREEN += (0.62f - 0.03f)/740;
+			BLUE += (0.69f - 0.035f)/740;
+			x += (DAY_SUN-NIGHT_SUN)/700;
+			y += (DAY_SUN-NIGHT_SUN)/700;
+			z +=  (DAY_SUN-NIGHT_SUN)/700;
 			lights.get(0).setColour(new Vector3f(x,y,z));
 		}else if (time >= 8000 && time < 21000){
 			RED = 0.5444f;
@@ -103,22 +103,22 @@ public class MasterRenderer {
 			z = DAY_SUN;
 			lights.get(0).setColour(new Vector3f(x,y,z));
 		}else{
-			RED -= (0.5444f - 0.02f)/350;
-			GREEN -= (0.62f - 0.03f)/350;
-			BLUE -= (0.69f - 0.035f)/350;
-			x -= (DAY_SUN-NIGHT_SUN)/350;
-			y -= (DAY_SUN-NIGHT_SUN)/350;
-			z -=  (DAY_SUN-NIGHT_SUN)/350;
+			RED -= (0.5444f - 0.02f)/700;
+			GREEN -= (0.62f - 0.03f)/700;
+			BLUE -= (0.69f - 0.035f)/700;
+			x -= (DAY_SUN-NIGHT_SUN)/700;
+			y -= (DAY_SUN-NIGHT_SUN)/700;
+			z -=  (DAY_SUN-NIGHT_SUN)/700;
 			lights.get(0).setColour(new Vector3f(x,y,z));
 		}
 		float x=0,y=0;
 
 		if (time>6000 && time<24000){
-			x = +10;
+			x = +5;
 			if (time < 15000){
-				y = 3f;
+				y = 1.5f;
 			}else {
-				y = -3f;
+				y = -1.5f;
 			}
 		}else {
 			x = 0;
