@@ -92,7 +92,7 @@ public class MasterRenderer {
 			BLUE += (0.69f - 0.035f)/740;
 			x += (DAY_SUN-NIGHT_SUN)/700;
 			y += (DAY_SUN-NIGHT_SUN)/700;
-			z +=  (DAY_SUN-NIGHT_SUN)/700;
+				z +=  (DAY_SUN-NIGHT_SUN)/700;
 			lights.get(0).setColour(new Vector3f(x,y,z));
 		}else if (time >= 8000 && time < 21000){
 			RED = 0.5444f;
