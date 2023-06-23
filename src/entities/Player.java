@@ -33,7 +33,7 @@ public class Player extends Entity{
     public void move(Terrain terrain, List<Entity> entities){
         checkInput();
         for (Entity entity : entities) {
-            isCollide = entity.detectCollision(new Vector3D(getPosition().x, getPosition().y+5, getPosition().z), entity.getModel().getRawModel(), 5);
+            isCollide = entity.detectCollision(new Vector3D(getPosition().x, getPosition().y+5.5, getPosition().z), entity.getModel().getRawModel(), 3);
             if (isCollide) {
                 break;
             }
@@ -43,11 +43,9 @@ public class Player extends Entity{
         float distance = currentSpeed * DisplayManager.getFrameTimeSeconds();
         float dx = (float) (distance * Math.sin(Math.toRadians(super.getRotY())));
         float dz = (float) (distance * Math.cos(Math.toRadians(super.getRotY())));
-        if (isCollide){
-            setPosition(new Vector3f(getPosition().x-0.1f,getPosition().y,getPosition().z-0.1f));
-        }else {
-            super.increasePosition(dx,0,dz);
-        }
+
+        super.increasePosition(dx,0,dz);
+
         upwardsSpeed += GRAVITY * DisplayManager.getFrameTimeSeconds();
         super.increasePosition(0,upwardsSpeed * DisplayManager.getFrameTimeSeconds(),0);
         float terrainHeight = terrain.getHeightOfTerain(super.getPosition().x,super.getPosition().z);
@@ -66,12 +64,16 @@ public class Player extends Entity{
     }
 
     private void checkInput() {
-        if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
-            this.currentSpeed = RUN_SPEED;
-        } else if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
+        if (!isCollide) {
+            if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
+                this.currentSpeed = RUN_SPEED;
+            } else if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
+                this.currentSpeed = -RUN_SPEED;
+            } else {
+                this.currentSpeed = 0;
+            }
+        }else {
             this.currentSpeed = -RUN_SPEED;
-        } else {
-            this.currentSpeed = 0;
         }
 
         if (Keyboard.isKeyDown(Keyboard.KEY_A)) {
