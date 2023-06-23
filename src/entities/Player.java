@@ -1,10 +1,13 @@
 package entities;
 
 import models.TexturedModel;
+import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.util.vector.Vector3f;
 import renderEngine.DisplayManager;
 import terrains.Terrain;
+
+import java.util.List;
 
 public class Player extends Entity{
 
@@ -21,18 +24,30 @@ public class Player extends Entity{
     private float upwardsSpeed = 0;
 
     private boolean isInAir = false;
+    private boolean isCollide = false;
 
     public Player(TexturedModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale) {
         super(model, position, rotX, rotY, rotZ, scale);
     }
 
-    public void move(Terrain terrain){
+    public void move(Terrain terrain, List<Entity> entities){
         checkInput();
+        for (Entity entity : entities) {
+            isCollide = entity.detectCollision(new Vector3D(getPosition().x, getPosition().y+5, getPosition().z), entity.getModel().getRawModel(), 1);
+            if (isCollide) {
+                break;
+            }
+        }
+
         super.increaseRotation(0,currentTurnSpeed * DisplayManager.getFrameTimeSeconds(),0);
         float distance = currentSpeed * DisplayManager.getFrameTimeSeconds();
         float dx = (float) (distance * Math.sin(Math.toRadians(super.getRotY())));
         float dz = (float) (distance * Math.cos(Math.toRadians(super.getRotY())));
-        super.increasePosition(dx,0,dz);
+        if (isCollide){
+            setPosition(new Vector3f(getPosition().x-0.1f,getPosition().y,getPosition().z-0.1f));
+        }else {
+            super.increasePosition(dx,0,dz);
+        }
         upwardsSpeed += GRAVITY * DisplayManager.getFrameTimeSeconds();
         super.increasePosition(0,upwardsSpeed * DisplayManager.getFrameTimeSeconds(),0);
         float terrainHeight = terrain.getHeightOfTerain(super.getPosition().x,super.getPosition().z);
@@ -41,7 +56,6 @@ public class Player extends Entity{
             isInAir = false;
             super.getPosition().y = terrainHeight;
         }
-
     }
 
     private void jump(){
