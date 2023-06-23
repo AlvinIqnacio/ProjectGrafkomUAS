@@ -77,7 +77,7 @@ public class OBJFileLoader {
 				texturesArray, normalsArray);
 		int[] indicesArray = convertIndicesListToArray(indices);
 		ModelData data = new ModelData(verticesArray, texturesArray, normalsArray, indicesArray,
-				furthest);
+				furthest, vertices,indices);
 		return data;
 	}
 

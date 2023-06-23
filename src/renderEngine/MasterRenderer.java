@@ -114,11 +114,11 @@ public class MasterRenderer {
 		float x=0,y=0;
 
 		if (time>6000 && time<24000){
-			x = +5;
+			x = +10;
 			if (time < 15000){
-				y = 1.5f;
+				y = 3f;
 			}else {
-				y = -1.5f;
+				y = -3f;
 			}
 		}else {
 			x = 0;
@@ -136,12 +136,12 @@ public class MasterRenderer {
 					lights.get(0).getPosition().z));
 		}
 
-		System.out.println(lights.get(0).getPosition());
+//		System.out.println(lights.get(0).getPosition());
 
 
 
 //		System.out.println(RED+" "+GREEN+" "+BLUE);
-		System.out.println(this.time+ " " + x);
+//		System.out.println(this.time+ " " + x);
 		shader.start();
 		shader.loadSkyColour(RED,GREEN,BLUE);
 		shader.loadLights(lights);
