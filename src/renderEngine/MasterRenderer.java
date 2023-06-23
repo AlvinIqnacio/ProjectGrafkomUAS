@@ -49,7 +49,7 @@ public class MasterRenderer {
 
 	private SkyboxRenderer skyboxRenderer;
 	private ShadowMapMasterRenderer shadowMapRenderer;
-	private float time;
+	public float time;
 	private float x=0,y=0,z=0;
 
 	
