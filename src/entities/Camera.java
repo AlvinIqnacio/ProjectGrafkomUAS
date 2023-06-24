@@ -51,6 +51,7 @@ public class Camera {
 		for (Entity entity : entities) {
 			isCollide = entity.detectCollision(new Vector3D(getPosition().x, getPosition().y, getPosition().z), entity.getModel().getRawModel(), 5);
 			if (isCollide) {
+				System.out.println(true);
 				break;
 			}
 		}
