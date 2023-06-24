@@ -11,6 +11,8 @@ out vec3 toCameraVector;
 out float visibility;
 out vec4 shadowCoords;
 
+out vec3 fragPos;
+
 uniform mat4 transformationMatrix;
 uniform mat4 projectionMatrix;
 uniform mat4 viewMatrix;
@@ -30,7 +32,7 @@ void main(void){
 
 	vec4 positionRelativeToCam = viewMatrix * worldPosition;
 
-
+    fragPos =vec3(transformationMatrix * vec4(position,1.0));
 
 	gl_Position = projectionMatrix * positionRelativeToCam;
     pass_textureCoordinates = textureCoordinates;

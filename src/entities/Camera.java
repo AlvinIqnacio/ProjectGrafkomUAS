@@ -3,18 +3,17 @@ package entities;
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
+import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector3f;
 import terrains.Terrain;
+import toolbox.Maths;
 
 import java.util.List;
 
 public class Camera {
-
 	private float sensitivityX =0.3f;
 	private float sensitivityY =0.1f;
 	private float sensitivityZoom =0.05f;
-
-
 
 	private Vector3f position = new Vector3f(0,0,0);
 	private float pitch = 10;
@@ -36,18 +35,22 @@ public class Camera {
 	private float cameraHeightFromPlayer = 5;
 	private boolean firstPersonView = false;
 
+	private Matrix4f matrix4f;
+	private Vector3f direction;
 
 	boolean isCollide= false;
 
 	public Camera(Player player){
 		this.player = player;
+		matrix4f = Maths.createTransformationMatrix(getPosition(),
+				player.getRotX(),player.getRotY(), player.getRotZ(),player.getScale());
+		direction = new Vector3f();
 	}
 	
 	public void move(Terrain terrain, List<Entity> entities){
 		for (Entity entity : entities) {
 			isCollide = entity.detectCollision(new Vector3D(getPosition().x, getPosition().y, getPosition().z), entity.getModel().getRawModel(), 5);
 			if (isCollide) {
-				System.out.println(true);
 				break;
 			}
 		}
@@ -74,6 +77,12 @@ public class Camera {
 			position.y = terrain.getHeightOfTerain(position.x,position.z) + 1;
 		}
 
+		matrix4f = Maths.createTransformationMatrix(getPosition(),
+				player.getRotX(),player.getRotY(), player.getRotZ(),player.getScale());
+
+		direction.x =matrix4f.m20;
+		direction.y =matrix4f.m10 - 0.1f;
+		direction.z = matrix4f.m00;
 	}
 
 	public Vector3f getPosition() {
@@ -90,6 +99,10 @@ public class Camera {
 
 	public float getRoll() {
 		return roll;
+	}
+
+	public Vector3f getDirection() {
+		return direction;
 	}
 
 	private void calculateCameraPosition(float horizontal, float vertical){

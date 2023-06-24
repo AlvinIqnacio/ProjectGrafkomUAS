@@ -5,8 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import entities.Player;
 import models.TexturedModel;
 
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL13;
@@ -51,6 +53,8 @@ public class MasterRenderer {
 	private ShadowMapMasterRenderer shadowMapRenderer;
 	public float time;
 	private float x=0,y=0,z=0;
+	private boolean spotlight = false;
+	public float keyPress;
 
 	
 	public MasterRenderer(Loader loader,Camera camera){
@@ -73,7 +77,7 @@ public class MasterRenderer {
 		GL11.glDisable(GL11.GL_CULL_FACE);
 	}
 	
-	public void render(List<Light> lights,Camera camera){
+	public void render(List<Light> lights, Camera camera, Player player){
 		prepare();
 		time += DisplayManager.getFrameTimeSeconds() * 500;
 		time %= 24000;
@@ -136,6 +140,24 @@ public class MasterRenderer {
 					lights.get(0).getPosition().z));
 		}
 
+		if (Keyboard.isKeyDown(Keyboard.KEY_F) && !spotlight && keyPress+100<time){
+			spotlight = true;
+			keyPress = time;
+		}else if (Keyboard.isKeyDown(Keyboard.KEY_F) && spotlight && keyPress+100<time){
+			spotlight = false;
+			keyPress = time;
+		}
+		if (time>0 && time<100){
+			keyPress = 0;
+		}
+
+		Vector3f temp;
+		if (spotlight){
+			temp = new Vector3f(player.getPosition().x,player.getPosition().y+10,player.getPosition().z);
+		}else {
+			temp = new Vector3f(10000000,10000000,10000000);
+		}
+
 //		System.out.println(lights.get(0).getPosition());
 
 
@@ -146,12 +168,34 @@ public class MasterRenderer {
 		shader.loadSkyColour(RED,GREEN,BLUE);
 		shader.loadLights(lights);
 		shader.loadViewMatrix(camera);
+		shader.loadSpotLight(
+				temp,
+				camera.getDirection(),
+				new Vector3f(0.0f,0.0f,0.0f),
+				new Vector3f(15.0f,15.0f,15.0f),
+				new Vector3f(15.0f,15.0f,15.0f),
+				1.0f,
+				0.09f,
+				0.032f,
+				(float)Math.cos(Math.toRadians(12.5f)),
+				(float)Math.cos(Math.toRadians(12.5f)),camera.getPosition());
 		renderer.render(entities);
 		shader.stop();
 		terrainShader.start();
 		terrainShader.loadSkyColour(RED,GREEN,BLUE);
 		terrainShader.loadLights(lights);
 		terrainShader.loadViewMatrix(camera);
+		terrainShader.loadSpotLight(
+				temp,
+				camera.getDirection(),
+				new Vector3f(0.0f, 0.0f, 0.0f),
+				new Vector3f(20.0f, 20.0f, 20.0f),
+				new Vector3f(20.0f, 20.0f, 20.0f),
+				1.0f,
+				0.09f,
+				0.032f,
+				(float) Math.cos(Math.toRadians(12.5f)),
+				(float) Math.cos(Math.toRadians(12.5f)), camera.getPosition());
 		terrainRenderer.render(terrains,shadowMapRenderer.getToShadowMapSpaceMatrix());
 		terrainShader.stop();
 		skyboxRenderer.render(camera,RED,GREEN,BLUE, time);

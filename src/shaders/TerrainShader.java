@@ -34,6 +34,18 @@ public class TerrainShader extends ShaderProgram{
 	private int location_toShadowMapSpace;
 	private int location_shadowMap;
 
+	private int location_spotLightPosition;
+	private int location_spotLightDirection;
+	private int location_spotLightAmbient;
+	private int location_spotLightDiffuse;
+	private int location_spotLightSpecular;
+	private int location_spotLightConstant;
+	private int location_spotLightLinear;
+	private int location_spotLightQuadratic;
+	private int location_spotLightCutOff;
+	private int location_spotLightOuterCutOff;
+	private int location_viewPos;
+
 
 	public TerrainShader() {
 		super(VERTEX_FILE, FRAGMENT_FILE);
@@ -72,6 +84,33 @@ public class TerrainShader extends ShaderProgram{
 			location_attenuation[i]= super.getUniformLocation("attenuation["+i+"]");
 		}
 
+		location_spotLightPosition = super.getUniformLocation("spotLight.position");
+		location_spotLightDirection = super.getUniformLocation("spotLight.direction");
+		location_spotLightAmbient = super.getUniformLocation("spotLight.ambient");
+		location_spotLightDiffuse = super.getUniformLocation("spotLight.diffuse");
+		location_spotLightSpecular = super.getUniformLocation("spotLight.specular");
+		location_spotLightConstant = super.getUniformLocation("spotLight.constant");
+		location_spotLightLinear = super.getUniformLocation("spotLight.linear");
+		location_spotLightQuadratic = super.getUniformLocation("spotLight.quadratic");
+		location_spotLightCutOff = super.getUniformLocation("spotLight.cutOff");
+		location_spotLightOuterCutOff = super.getUniformLocation("spotLight.outerCutOff");
+		location_viewPos = super.getUniformLocation("spotLight.viewPos");
+
+	}
+
+	public void loadSpotLight(Vector3f position, Vector3f direction, Vector3f ambient, Vector3f diffuse, Vector3f specular,
+							  float constant, float linear, float quadratic, float cutOff, float outerCutOff, Vector3f viewPos){
+		super.loadVector(location_spotLightPosition, position);
+		super.loadVector(location_spotLightDirection, direction);
+		super.loadVector(location_spotLightAmbient, ambient);
+		super.loadVector(location_spotLightDiffuse, diffuse);
+		super.loadVector(location_spotLightSpecular, specular);
+		super.loadFloat(location_spotLightConstant, constant);
+		super.loadFloat(location_spotLightLinear, linear);
+		super.loadFloat(location_spotLightQuadratic, quadratic);
+		super.loadFloat(location_spotLightCutOff, cutOff);
+		super.loadFloat(location_spotLightOuterCutOff,outerCutOff);
+		super.loadVector(location_viewPos,viewPos);
 	}
 
 

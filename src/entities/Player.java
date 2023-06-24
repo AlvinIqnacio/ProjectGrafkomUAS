@@ -3,9 +3,11 @@ package entities;
 import models.TexturedModel;
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector3f;
 import renderEngine.DisplayManager;
 import terrains.Terrain;
+import toolbox.Maths;
 
 import java.util.List;
 
@@ -28,6 +30,7 @@ public class Player extends Entity{
 
     public Player(TexturedModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale) {
         super(model, position, rotX, rotY, rotZ, scale);
+
     }
 
     public void move(Terrain terrain, List<Entity> entities){
@@ -54,6 +57,8 @@ public class Player extends Entity{
             isInAir = false;
             super.getPosition().y = terrainHeight;
         }
+
+
     }
 
     private void jump(){

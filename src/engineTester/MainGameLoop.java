@@ -439,7 +439,7 @@ public class MainGameLoop {
 			for(Entity entity:entities){
 				renderer.processEntity(entity);
 			}
-			renderer.render(lights, camera);
+			renderer.render(lights, camera,player);
 			guiRenderer.render(guis);
 			DisplayManager.updateDisplay();
 		}
