@@ -289,6 +289,36 @@ public class MainGameLoop {
 		lights.add(new Light(new Vector3f(247f,terrain.getHeightOfTerain(247f,-373f)+20f,-373f),new Vector3f(2,0,0),new Vector3f(1.5f,0.01f,0.0002f)));
 		entities.add(new Entity(lamp,new Vector3f(247f,terrain.getHeightOfTerain(247f,-373f),-373f),0,0,0,1.5f));
 
+		lights.add(new Light(new Vector3f(663f,terrain.getHeightOfTerain(663f,-315f)+20f,-315f),new Vector3f(2,0,0),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(663f,terrain.getHeightOfTerain(663f,-315f),-315f),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(753f,terrain.getHeightOfTerain(753f,-98f)+20f,-98f),new Vector3f(2,0,0),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(753f,terrain.getHeightOfTerain(753f,-98f),-98f),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(433f,terrain.getHeightOfTerain(433f,-77f)+20f,-77f),new Vector3f(2,0,0),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(433f,terrain.getHeightOfTerain(433f,-77f),-77f),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(573f,terrain.getHeightOfTerain(573f,-200f)+20f,-200f),new Vector3f(2,0,0),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(573f,terrain.getHeightOfTerain(573f,-200f),-200f),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(474f,terrain.getHeightOfTerain(474f,-435f)+20f,-435f),new Vector3f(2,0,0),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(474f,terrain.getHeightOfTerain(474f,-435f),-435f),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(418f,terrain.getHeightOfTerain(418f,-660f)+20f,-660f),new Vector3f(2,0,0),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(418f,terrain.getHeightOfTerain(418f,-660f),-660f),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(213f,terrain.getHeightOfTerain(213f,-193f)+20f,-193f),new Vector3f(2,0,0),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(213f,terrain.getHeightOfTerain(213f,-193f),-193f),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(207f,terrain.getHeightOfTerain(207f,-114f)+20f,-114f),new Vector3f(2,0,0),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(207f,terrain.getHeightOfTerain(207f,-114f),-114f),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(87f,terrain.getHeightOfTerain(87f,-202f)+20f,-202f),new Vector3f(2,0,0),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(87f,terrain.getHeightOfTerain(87f,-202f),-202f),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(265f,terrain.getHeightOfTerain(265f,-113f)+20f,-113f),new Vector3f(2,0,0),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(265f,terrain.getHeightOfTerain(265f,-113f),-113f),0,0,0,1.5f));
+
 		// Light 2 & Lamp
 		lights.add(new Light(new Vector3f(421.35f,terrain.getHeightOfTerain(421.35f,-322)+20f,-322),new Vector3f(0,2,2),new Vector3f(1.5f,0.01f,0.0002f)));
 		entities.add(new Entity(lamp,new Vector3f(421.35f,terrain.getHeightOfTerain(421.35f,-322),-322),0,0,0,1.5f));
@@ -302,11 +332,56 @@ public class MainGameLoop {
 		lights.add(new Light(new Vector3f(127f,terrain.getHeightOfTerain(127f,-373)+20f,-373),new Vector3f(0,2,2),new Vector3f(1.5f,0.01f,0.0002f)));
 		entities.add(new Entity(lamp,new Vector3f(127f,terrain.getHeightOfTerain(127f,-373),-373),0,0,0,1.5f));
 
+		lights.add(new Light(new Vector3f(770f,terrain.getHeightOfTerain(770f,-289)+20f,-289),new Vector3f(0,2,2),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(770f,terrain.getHeightOfTerain(770f,-289),-289),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(703f,terrain.getHeightOfTerain(703f,-46)+20f,-46),new Vector3f(0,2,2),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(703f,terrain.getHeightOfTerain(703f,-46),-46),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(365f,terrain.getHeightOfTerain(365f,-153)+20f,-153),new Vector3f(0,2,2),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(365f,terrain.getHeightOfTerain(365f,-153),-153),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(613f,terrain.getHeightOfTerain(613f,-449)+20f,-449),new Vector3f(0,2,2),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(613f,terrain.getHeightOfTerain(613f,-449),-449),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(126f,terrain.getHeightOfTerain(126f,-265)+20f,-265),new Vector3f(0,2,2),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(126f,terrain.getHeightOfTerain(126f,-265),-265),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(158f,terrain.getHeightOfTerain(158f,-221)+20f,-221),new Vector3f(0,2,2),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(158f,terrain.getHeightOfTerain(158f,-221),-221),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(316f,terrain.getHeightOfTerain(316f,-14)+20f,-14),new Vector3f(2,2,2),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(316f,terrain.getHeightOfTerain(316f,-14),-14),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(283f,terrain.getHeightOfTerain(283f,-502)+20f,-502),new Vector3f(0,0,2),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(283f,terrain.getHeightOfTerain(283f,-502),-502),0,0,0,1.5f));
+
 
 
 		// Light 3 & Lamp
 		lights.add(new Light(new Vector3f(470,terrain.getHeightOfTerain(470,-305)+20f,-305),new Vector3f(2,2,0),new Vector3f(1.5f,0.01f,0.0002f)));
-		entities.add(new Entity(lamp,new Vector3f(470,terrain.getHeightOfTerain(470,-305),-434),0,0,0,1.5f));
+		entities.add(new Entity(lamp,new Vector3f(470,terrain.getHeightOfTerain(470,-305),-305),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(780,terrain.getHeightOfTerain(780,-175)+20f,-175),new Vector3f(2,2,0),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(780,terrain.getHeightOfTerain(780,-175),-175),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(501,terrain.getHeightOfTerain(501,-140)+20f,-140),new Vector3f(2,2,0),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(501,terrain.getHeightOfTerain(501,-140),-140),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(555,terrain.getHeightOfTerain(555,-14)+20f,-14),new Vector3f(2,2,0),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(555,terrain.getHeightOfTerain(555,-14),-14),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(422,terrain.getHeightOfTerain(422,-227)+20f,-227),new Vector3f(2,2,0),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(422,terrain.getHeightOfTerain(422,-227),-227),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(303,terrain.getHeightOfTerain(303,-225)+20f,-225),new Vector3f(2,2,0),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(303,terrain.getHeightOfTerain(303,-225),-225),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(653,terrain.getHeightOfTerain(653,-401)+20f,-401),new Vector3f(2,2,0),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(653,terrain.getHeightOfTerain(653,-401),-401),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(450,terrain.getHeightOfTerain(450,-565)+20f,-565),new Vector3f(2,2,0),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(450,terrain.getHeightOfTerain(450,-565),-565),0,0,0,1.5f));
 
 
 
@@ -325,6 +400,16 @@ public class MainGameLoop {
 		entities.add(new Entity(house,new Vector3f(590f,terrain.getHeightOfTerain(590f,-230),-230),0,0,0,1));
 		entities.add(new Entity(houset,new Vector3f(550f,terrain.getHeightOfTerain(550f,-383),-383),0,0,0,1));
 		entities.add(new Entity(houseb,new Vector3f(577f,terrain.getHeightOfTerain(577f,-326),-326),0,0,0,1));
+		entities.add(new Entity(houseb,new Vector3f(690f,terrain.getHeightOfTerain(690f,-325),-325),0,0,0,1));
+		entities.add(new Entity(houseb,new Vector3f(670f,terrain.getHeightOfTerain(670f,-65),-65),0,0,0,1));
+		entities.add(new Entity(houseb,new Vector3f(460f,terrain.getHeightOfTerain(460f,-65),-65),0,0,0,1));
+		entities.add(new Entity(house,new Vector3f(450f,terrain.getHeightOfTerain(450f,-599),-599),0,0,0,1));
+		entities.add(new Entity(houseu,new Vector3f(155f,terrain.getHeightOfTerain(155f,-289),-289),0,0,0,1));
+		entities.add(new Entity(houseb,new Vector3f(186f,terrain.getHeightOfTerain(186f,-214),-214),0,0,0,1));
+		entities.add(new Entity(houseu,new Vector3f(238f,terrain.getHeightOfTerain(238f,-119),-119),0,0,0,1));
+		entities.add(new Entity(house,new Vector3f(187f,terrain.getHeightOfTerain(187f,-138),-138),0,0,0,1));
+		entities.add(new Entity(houset,new Vector3f(120f,terrain.getHeightOfTerain(120f,-164),-164),0,0,0,1));
+
 
 		// HOUSE 2
 		entities.add(new Entity(house2,new Vector3f(580f,terrain.getHeightOfTerain(580f,-468),-468),0,0,0,1));
@@ -332,7 +417,7 @@ public class MainGameLoop {
 		entities.add(new Entity(house2u,new Vector3f(608f,terrain.getHeightOfTerain(608f,-544),-544),0,0,0,1));
 		entities.add(new Entity(house2u,new Vector3f(608f,terrain.getHeightOfTerain(608f,-490),-490),0,0,0,1));
 		entities.add(new Entity(house2,new Vector3f(304f,terrain.getHeightOfTerain(304f,-630),-630),0,0,0,1));
-		entities.add(new Entity(house2,new Vector3f(90f,terrain.getHeightOfTerain(90f,-327),-327),0,0,0,1));
+		entities.add(new Entity(house2t,new Vector3f(40f,terrain.getHeightOfTerain(40f,-327),-327),0,0,0,1));
 		entities.add(new Entity(house2,new Vector3f(400f,terrain.getHeightOfTerain(400f,-266),-266),0,0,0,1));
 		entities.add(new Entity(house2u,new Vector3f(423f,terrain.getHeightOfTerain(423f,-268),-268),0,0,0,1));
 		entities.add(new Entity(house2u,new Vector3f(423f,terrain.getHeightOfTerain(423f,-200),-200),0,0,0,1));
@@ -342,9 +427,19 @@ public class MainGameLoop {
 		entities.add(new Entity(house2b,new Vector3f(427f,terrain.getHeightOfTerain(427f,-495),-495),0,0,0,1));
 		entities.add(new Entity(house2u,new Vector3f(486f,terrain.getHeightOfTerain(486f,-368),-368),0,0,0,1));
 		entities.add(new Entity(house2b,new Vector3f(519f,terrain.getHeightOfTerain(519f,-185),-185),0,0,0,1));
+		entities.add(new Entity(house2t,new Vector3f(668f,terrain.getHeightOfTerain(668f,-265),-265),0,0,0,1));
+		entities.add(new Entity(house2,new Vector3f(799f,terrain.getHeightOfTerain(790f,-120),-120),0,0,0,1));
+		entities.add(new Entity(house2,new Vector3f(799f,terrain.getHeightOfTerain(790f,-170),-170),0,0,0,1));
+		entities.add(new Entity(house2u,new Vector3f(650f,terrain.getHeightOfTerain(650f,-175),-175),0,0,0,1));
+		entities.add(new Entity(house2t,new Vector3f(580f,terrain.getHeightOfTerain(580f,-110),-110),0,0,0,1));
+		entities.add(new Entity(house2,new Vector3f(300f,terrain.getHeightOfTerain(300f,-258),-258),0,0,0,1));
+		entities.add(new Entity(house2,new Vector3f(420f,terrain.getHeightOfTerain(420f,-70),-70),0,0,0,1));
+		entities.add(new Entity(house2,new Vector3f(215f,terrain.getHeightOfTerain(215f,-60),-60),0,0,0,1));
+		entities.add(new Entity(house2,new Vector3f(120f,terrain.getHeightOfTerain(120f,-280),-260),0,0,0,1));
 
 		// Windmill
 		entities.add(new Entity(windmillu,new Vector3f(708f,terrain.getHeightOfTerain(708f,-337f),-337f),0,0,0,1));
+		entities.add(new Entity(windmillu,new Vector3f(685f,terrain.getHeightOfTerain(685f,-65f),-65f),0,0,0,1));
 
 
 		// Herb Stall
@@ -365,12 +460,35 @@ public class MainGameLoop {
 		entities.add(new Entity(tree,new Vector3f(534f,terrain.getHeightOfTerain(534f,-439),-439),0,0,0,3));
 		entities.add(new Entity(tree,new Vector3f(562f,terrain.getHeightOfTerain(562f,-255),-255),0,0,0,3));
 		entities.add(new Entity(tree,new Vector3f(479f,terrain.getHeightOfTerain(479f,-239),-239),0,0,0,5));
+		entities.add(new Entity(tree,new Vector3f(698f,terrain.getHeightOfTerain(698f,-363),-363),0,0,0,5));
+		entities.add(new Entity(tree,new Vector3f(631f,terrain.getHeightOfTerain(631f,-52),-52),0,0,0,5));
+		entities.add(new Entity(tree,new Vector3f(523f,terrain.getHeightOfTerain(523f,-72),-72),0,0,0,5));
+		entities.add(new Entity(tree,new Vector3f(285f,terrain.getHeightOfTerain(285f,-168),-168),0,0,0,5));
+		entities.add(new Entity(tree,new Vector3f(249f,terrain.getHeightOfTerain(249f,-302),-302),0,0,0,5));
+		entities.add(new Entity(tree,new Vector3f(436f,terrain.getHeightOfTerain(436f,-639),-639),0,0,0,5));
+		entities.add(new Entity(tree,new Vector3f(233f,terrain.getHeightOfTerain(233f,-216),-216),0,0,0,5));
+		entities.add(new Entity(tree,new Vector3f(110f,terrain.getHeightOfTerain(110f,-345),-345),0,0,0,5));
+		entities.add(new Entity(tree,new Vector3f(100f,terrain.getHeightOfTerain(100f,-174),-174),0,0,0,5));
+		entities.add(new Entity(tree,new Vector3f(23f,terrain.getHeightOfTerain(23f,-200),-200),0,0,0,5));
+		entities.add(new Entity(tree,new Vector3f(41f,terrain.getHeightOfTerain(41f,-139),-139),0,0,0,5));
+		entities.add(new Entity(tree,new Vector3f(86f,terrain.getHeightOfTerain(86f,-96),-96),0,0,0,5));
+		entities.add(new Entity(tree,new Vector3f(73f,terrain.getHeightOfTerain(73f,-56),-56),0,0,0,5));
+		entities.add(new Entity(tree,new Vector3f(283f,terrain.getHeightOfTerain(283f,-99),-99),0,0,0,5));
+		entities.add(new Entity(tree,new Vector3f(175f,terrain.getHeightOfTerain(175f,-22),-22),0,0,0,5));
 
 		// Tree 1
 		entities.add(new Entity(tree1,new Vector3f(144f,terrain.getHeightOfTerain(144f,-255),-255),0,0,0,1.5f));
 		entities.add(new Entity(tree1,new Vector3f(346f,terrain.getHeightOfTerain(346f,-567),-567),0,0,0,1.5f));
 		entities.add(new Entity(tree1,new Vector3f(625f,terrain.getHeightOfTerain(625f,-579),-579),0,0,0,1.5f));
 		entities.add(new Entity(tree1,new Vector3f(603f,terrain.getHeightOfTerain(603f,-390),-390),0,0,0,1.5f));
+		entities.add(new Entity(tree1,new Vector3f(745f,terrain.getHeightOfTerain(745f,-250),-250),0,0,0,1.5f));
+		entities.add(new Entity(tree1,new Vector3f(784f,terrain.getHeightOfTerain(784f,-14),-14),0,0,0,1.5f));
+		entities.add(new Entity(tree1,new Vector3f(482f,terrain.getHeightOfTerain(482f,-14),-14),0,0,0,1.5f));
+		entities.add(new Entity(tree1,new Vector3f(633f,terrain.getHeightOfTerain(633f,-132),-132),0,0,0,1.5f));
+		entities.add(new Entity(tree1,new Vector3f(673f,terrain.getHeightOfTerain(673f,-464),-464),0,0,0,1.5f));
+		entities.add(new Entity(tree1,new Vector3f(77f,terrain.getHeightOfTerain(77f,-225),-225),0,0,0,1.5f));
+		entities.add(new Entity(tree1,new Vector3f(216f,terrain.getHeightOfTerain(216f,-64),-64),0,0,0,1.5f));
+		entities.add(new Entity(tree1,new Vector3f(294f,terrain.getHeightOfTerain(294f,-54),-54),0,0,0,1.5f));
 
 
 
