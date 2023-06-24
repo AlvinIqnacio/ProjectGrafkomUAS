@@ -39,9 +39,30 @@ public class MainGameLoop {
 		ModelData treeData = OBJFileLoader.loadOBJ("pine");
 		ModelData playerData = OBJFileLoader.loadOBJ("person");
 		ModelData lampData = OBJFileLoader.loadOBJ("lamp");
+
+		// House 1
 		ModelData houseData = OBJFileLoader.loadOBJ("Socuwan Scene/Houses/home1");
-		ModelData windwillData = OBJFileLoader.loadOBJ("Socuwan Scene/Windmill/model");
-		ModelData rockData = OBJFileLoader.loadOBJ("Socuwan Scene/Bushes/model");
+		ModelData housetData = OBJFileLoader.loadOBJ("Socuwan Scene/Houses/home1timur");
+		ModelData housebData = OBJFileLoader.loadOBJ("Socuwan Scene/Houses/home1barat");
+		ModelData houseuData = OBJFileLoader.loadOBJ("Socuwan Scene/Houses/home1utara");
+
+		// House 2
+		ModelData house2Data = OBJFileLoader.loadOBJ("Socuwan Scene/Houses/home2");
+		ModelData house2tData = OBJFileLoader.loadOBJ("Socuwan Scene/Houses/home2timur");
+		ModelData house2bData = OBJFileLoader.loadOBJ("Socuwan Scene/Houses/home2barat");
+		ModelData house2uData = OBJFileLoader.loadOBJ("Socuwan Scene/Houses/home2utara");
+
+		// Windmill
+		ModelData windwillData = OBJFileLoader.loadOBJ("Socuwan Scene/Windmill/windmill");
+		ModelData windwilltData = OBJFileLoader.loadOBJ("Socuwan Scene/Windmill/windmill_timur");
+		ModelData windwillbData = OBJFileLoader.loadOBJ("Socuwan Scene/Windmill/windmill_barat");
+		ModelData windwilluData = OBJFileLoader.loadOBJ("Socuwan Scene/Windmill/windmill_utara");
+
+		// Herb Stall
+		ModelData stallData = OBJFileLoader.loadOBJ("Socuwan Scene/Herb Stall/herbstall_");
+		ModelData stall1Data = OBJFileLoader.loadOBJ("Socuwan Scene/Herb Stall/herbstall1");
+
+		ModelData bridgeData = OBJFileLoader.loadOBJ("Socuwan Scene/Bridge/bridge");
 
 
 
@@ -77,6 +98,7 @@ public class MainGameLoop {
 				lampData.getVerticesModel(),
 				lampData.getIndicesModel());
 
+		// House 1
 		RawModel houseModel = loader.loadToVAOTemp(
 				houseData.getVertices(),
 				houseData.getTextureCoords(),
@@ -84,7 +106,59 @@ public class MainGameLoop {
 				houseData.getIndices(),
 				houseData.getVerticesModel(),
 				houseData.getIndicesModel());
+		RawModel housetModel = loader.loadToVAOTemp(
+				housetData.getVertices(),
+				housetData.getTextureCoords(),
+				housetData.getNormals(),
+				housetData.getIndices(),
+				housetData.getVerticesModel(),
+				housetData.getIndicesModel());
+		RawModel housebModel = loader.loadToVAOTemp(
+				housebData.getVertices(),
+				housebData.getTextureCoords(),
+				housebData.getNormals(),
+				housebData.getIndices(),
+				housebData.getVerticesModel(),
+				housebData.getIndicesModel());
+		RawModel houseuModel = loader.loadToVAOTemp(
+				houseuData.getVertices(),
+				houseuData.getTextureCoords(),
+				houseuData.getNormals(),
+				houseuData.getIndices(),
+				houseuData.getVerticesModel(),
+				houseuData.getIndicesModel());
 
+		// House 2
+		RawModel house2Model = loader.loadToVAOTemp(
+				house2Data.getVertices(),
+				house2Data.getTextureCoords(),
+				house2Data.getNormals(),
+				house2Data.getIndices(),
+				house2Data.getVerticesModel(),
+				house2Data.getIndicesModel());
+		RawModel house2tModel = loader.loadToVAOTemp(
+				house2tData.getVertices(),
+				house2tData.getTextureCoords(),
+				house2tData.getNormals(),
+				house2tData.getIndices(),
+				house2tData.getVerticesModel(),
+				house2tData.getIndicesModel());
+		RawModel house2bModel = loader.loadToVAOTemp(
+				house2bData.getVertices(),
+				house2bData.getTextureCoords(),
+				house2bData.getNormals(),
+				house2bData.getIndices(),
+				house2bData.getVerticesModel(),
+				house2bData.getIndicesModel());
+		RawModel house2uModel = loader.loadToVAOTemp(
+				house2uData.getVertices(),
+				house2uData.getTextureCoords(),
+				house2uData.getNormals(),
+				house2uData.getIndices(),
+				house2uData.getVerticesModel(),
+				house2uData.getIndicesModel());
+
+		// Windmill
 		RawModel windmillModel = loader.loadToVAOTemp(
 				windwillData.getVertices(),
 				windwillData.getTextureCoords(),
@@ -92,14 +166,51 @@ public class MainGameLoop {
 				windwillData.getIndices(),
 				windwillData.getVerticesModel(),
 				windwillData.getIndicesModel());
+		RawModel windmilltModel = loader.loadToVAOTemp(
+				windwilltData.getVertices(),
+				windwilltData.getTextureCoords(),
+				windwilltData.getNormals(),
+				windwilltData.getIndices(),
+				windwilltData.getVerticesModel(),
+				windwilltData.getIndicesModel());
+		RawModel windmillbModel = loader.loadToVAOTemp(
+				windwillbData.getVertices(),
+				windwillbData.getTextureCoords(),
+				windwillbData.getNormals(),
+				windwillbData.getIndices(),
+				windwillbData.getVerticesModel(),
+				windwillbData.getIndicesModel());
+		RawModel windmilluModel = loader.loadToVAOTemp(
+				windwilluData.getVertices(),
+				windwilluData.getTextureCoords(),
+				windwilluData.getNormals(),
+				windwilluData.getIndices(),
+				windwilluData.getVerticesModel(),
+				windwilluData.getIndicesModel());
 
-		RawModel rockModel = loader.loadToVAOTemp(
-				rockData.getVertices(),
-				rockData.getTextureCoords(),
-				rockData.getNormals(),
-				rockData.getIndices(),
-				rockData.getVerticesModel(),
-				rockData.getIndicesModel());
+		RawModel bridgeModel = loader.loadToVAOTemp(
+				bridgeData.getVertices(),
+				bridgeData.getTextureCoords(),
+				bridgeData.getNormals(),
+				bridgeData.getIndices(),
+				bridgeData.getVerticesModel(),
+				bridgeData.getIndicesModel());
+
+		// Herb Stall
+		RawModel stallModel = loader.loadToVAOTemp(
+				stallData.getVertices(),
+				stallData.getTextureCoords(),
+				stallData.getNormals(),
+				stallData.getIndices(),
+				stallData.getVerticesModel(),
+				stallData.getIndicesModel());
+		RawModel stall1Model = loader.loadToVAOTemp(
+				stall1Data.getVertices(),
+				stall1Data.getTextureCoords(),
+				stall1Data.getNormals(),
+				stall1Data.getIndices(),
+				stall1Data.getVerticesModel(),
+				stall1Data.getIndicesModel());
 
 
 		ModelTexture fernTextureAtlas = new ModelTexture(loader.loadTexture("fern"));
@@ -110,9 +221,30 @@ public class MainGameLoop {
 		TexturedModel tree1 = new TexturedModel(tree1Model,new ModelTexture(loader.loadTexture("lowPolyTree")));
 		TexturedModel lamp = new TexturedModel(lampModel, new ModelTexture(loader.loadTexture("lamp")));
 		TexturedModel person = new TexturedModel(personModel,new ModelTexture(loader.loadTexture("playerTexture")));
+
+		// House 1
 		TexturedModel house = new TexturedModel(houseModel,new ModelTexture(loader.loadTexture("Socuwan Scene/Houses/diffuse")));
+		TexturedModel houset = new TexturedModel(housetModel,new ModelTexture(loader.loadTexture("Socuwan Scene/Houses/diffuse")));
+		TexturedModel houseb = new TexturedModel(housebModel,new ModelTexture(loader.loadTexture("Socuwan Scene/Houses/diffuse")));
+		TexturedModel houseu = new TexturedModel(houseuModel,new ModelTexture(loader.loadTexture("Socuwan Scene/Houses/diffuse")));
+
+		// House 2
+		TexturedModel house2 = new TexturedModel(house2Model,new ModelTexture(loader.loadTexture("Socuwan Scene/Houses/diffuse")));
+		TexturedModel house2t = new TexturedModel(house2tModel,new ModelTexture(loader.loadTexture("Socuwan Scene/Houses/diffuse")));
+		TexturedModel house2b = new TexturedModel(house2bModel,new ModelTexture(loader.loadTexture("Socuwan Scene/Houses/diffuse")));
+		TexturedModel house2u = new TexturedModel(house2uModel,new ModelTexture(loader.loadTexture("Socuwan Scene/Houses/diffuse")));
+
+		// Windmill
 		TexturedModel windmill = new TexturedModel(windmillModel,new ModelTexture(loader.loadTexture("Socuwan Scene/Windmill/diffuse")));
-		TexturedModel rock = new TexturedModel(rockModel,new ModelTexture(loader.loadTexture("Socuwan Scene/Bushes/diffuse")));
+		TexturedModel windmillt = new TexturedModel(windmilltModel,new ModelTexture(loader.loadTexture("Socuwan Scene/Windmill/diffuse")));
+		TexturedModel windmillb = new TexturedModel(windmillbModel,new ModelTexture(loader.loadTexture("Socuwan Scene/Windmill/diffuse")));
+		TexturedModel windmillu = new TexturedModel(windmilluModel,new ModelTexture(loader.loadTexture("Socuwan Scene/Windmill/diffuse")));
+
+		TexturedModel bridge = new TexturedModel(bridgeModel,new ModelTexture(loader.loadTexture("Socuwan Scene/Bridge/diffuse")));
+
+		// Herb Stall
+		TexturedModel stall = new TexturedModel(stallModel,new ModelTexture(loader.loadTexture("Socuwan Scene/Herb Stall/diffuse")));
+		TexturedModel stall1 = new TexturedModel(stall1Model,new ModelTexture(loader.loadTexture("Socuwan Scene/Herb Stall/diffuse")));
 
 		//no collision
 		TexturedModel grass = new TexturedModel(OBJLoader.loadObjModel("grassModel",loader),
@@ -146,50 +278,100 @@ public class MainGameLoop {
 
 		List<Light> lights = new ArrayList<>();
 		lights.add(new Light(new Vector3f(-10000,2000,5),new Vector3f(1.0f,1.0f,1.0f)));
-		lights.add(new Light(new Vector3f(185,terrain.getHeightOfTerain(185,-293)+13f,-293),new Vector3f(2,0,0),new Vector3f(1,0.01f,0.002f)));
-		lights.add(new Light(new Vector3f(370,terrain.getHeightOfTerain(370,-300)+13f,-300),new Vector3f(0,2,2),new Vector3f(1,0.01f,0.002f)));
-		lights.add(new Light(new Vector3f(293,terrain.getHeightOfTerain(293,-305)+13f,-305),new Vector3f(2,2,0),new Vector3f(1,0.01f,0.002f)));
 
-		entities.add(new Entity(lamp,new Vector3f(185,terrain.getHeightOfTerain(185,-293),-293),0,0,0,1));
-		entities.add(new Entity(lamp,new Vector3f(370,terrain.getHeightOfTerain(370,-300),-300),0,0,0,1));
-		entities.add(new Entity(lamp,new Vector3f(293,terrain.getHeightOfTerain(293,-305),-305),0,0,0,1));
+		// Light 1 & Lamp
+		lights.add(new Light(new Vector3f(318.71042f,terrain.getHeightOfTerain(318.71042f,-349.7511f)+20f,-349.7511f),new Vector3f(2,0,0),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(318.71042f,terrain.getHeightOfTerain(318.71042f,-349.7511f),-349.7511f),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(256f,terrain.getHeightOfTerain(256f,-423f)+20f,-423f),new Vector3f(2,0,0),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(256f,terrain.getHeightOfTerain(256f,-423f),-423f),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(247f,terrain.getHeightOfTerain(247f,-373f)+20f,-373f),new Vector3f(2,0,0),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(247f,terrain.getHeightOfTerain(247f,-373f),-373f),0,0,0,1.5f));
+
+		// Light 2 & Lamp
+		lights.add(new Light(new Vector3f(421.35f,terrain.getHeightOfTerain(421.35f,-322)+20f,-322),new Vector3f(0,2,2),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(421.35f,terrain.getHeightOfTerain(421.35f,-322),-322),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(323f,terrain.getHeightOfTerain(323f,-423)+20f,-423),new Vector3f(0,2,2),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(323f,terrain.getHeightOfTerain(323f,-423),-423),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(166f,terrain.getHeightOfTerain(166f,-426)+20f,-426),new Vector3f(0,2,2),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(166f,terrain.getHeightOfTerain(166f,-426),-426),0,0,0,1.5f));
+
+		lights.add(new Light(new Vector3f(127f,terrain.getHeightOfTerain(127f,-373)+20f,-373),new Vector3f(0,2,2),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(127f,terrain.getHeightOfTerain(127f,-373),-373),0,0,0,1.5f));
+
+
+
+		// Light 3 & Lamp
+		lights.add(new Light(new Vector3f(470,terrain.getHeightOfTerain(470,-305)+20f,-305),new Vector3f(2,2,0),new Vector3f(1.5f,0.01f,0.0002f)));
+		entities.add(new Entity(lamp,new Vector3f(470,terrain.getHeightOfTerain(470,-305),-434),0,0,0,1.5f));
+
+
 
 
 		Player player = new Player(person, new Vector3f(405,3.64f,-382.92123f), 0,0,0,1);
 
 		entities.add(new Entity(tree, new Vector3f(10,0,-20), 0f,0f,0f,5f));
-//		entities.add(new Entity(house, new Vector3f(400f,3.647f,-384), 0f,0f,0f,10f));
-//		entities.add(new Entity(herbstall, new Vector3f(340f,5.0f,-395f), 0f,0f,0f,10f));
 
-		entities.add(new Entity(house,new Vector3f(370.95074f,terrain.getHeightOfTerain(370.95074f,-420.24857f),-420.24857f),0,0,0,1));
-		entities.add(new Entity(windmill,new Vector3f(380.3f,terrain.getHeightOfTerain(380.3f,-387f),-387f),0,0,0,10));
-		entities.add(new Entity(rock,new Vector3f(387.3f,terrain.getHeightOfTerain(387.3f,-395.2f),-395.2f),0,0,0,10));
+
+		// HOUSE 1
+		entities.add(new Entity(house,new Vector3f(338f,terrain.getHeightOfTerain(338f,-188),-188),0,0,0,1));
+		entities.add(new Entity(house,new Vector3f(338f,terrain.getHeightOfTerain(338f,-230),-230),0,0,0,1));
+		entities.add(new Entity(houset,new Vector3f(499f,terrain.getHeightOfTerain(499f,-275),-275),0,0,0,1));
+		entities.add(new Entity(houseb,new Vector3f(215f,terrain.getHeightOfTerain(215f,-440),-440),0,0,0,1));
+		entities.add(new Entity(houseb,new Vector3f(268f,terrain.getHeightOfTerain(268f,-353),-353),0,0,0,1));
+		entities.add(new Entity(house,new Vector3f(590f,terrain.getHeightOfTerain(590f,-230),-230),0,0,0,1));
+		entities.add(new Entity(houset,new Vector3f(550f,terrain.getHeightOfTerain(550f,-383),-383),0,0,0,1));
+		entities.add(new Entity(houseb,new Vector3f(577f,terrain.getHeightOfTerain(577f,-326),-326),0,0,0,1));
+
+		// HOUSE 2
+		entities.add(new Entity(house2,new Vector3f(580f,terrain.getHeightOfTerain(580f,-468),-468),0,0,0,1));
+		entities.add(new Entity(house2,new Vector3f(580f,terrain.getHeightOfTerain(580f,-518),-518),0,0,0,1));
+		entities.add(new Entity(house2u,new Vector3f(608f,terrain.getHeightOfTerain(608f,-544),-544),0,0,0,1));
+		entities.add(new Entity(house2u,new Vector3f(608f,terrain.getHeightOfTerain(608f,-490),-490),0,0,0,1));
+		entities.add(new Entity(house2,new Vector3f(304f,terrain.getHeightOfTerain(304f,-630),-630),0,0,0,1));
+		entities.add(new Entity(house2,new Vector3f(90f,terrain.getHeightOfTerain(90f,-327),-327),0,0,0,1));
+		entities.add(new Entity(house2,new Vector3f(400f,terrain.getHeightOfTerain(400f,-266),-266),0,0,0,1));
+		entities.add(new Entity(house2u,new Vector3f(423f,terrain.getHeightOfTerain(423f,-268),-268),0,0,0,1));
+		entities.add(new Entity(house2u,new Vector3f(423f,terrain.getHeightOfTerain(423f,-200),-200),0,0,0,1));
+		entities.add(new Entity(house2b,new Vector3f(271.50055f,terrain.getHeightOfTerain(271.50055f,-440),-440),0,0,0,1));
+		entities.add(new Entity(house2t,new Vector3f(209.52f,terrain.getHeightOfTerain(209.52f,-353),-353),0,0,0,1));
+		entities.add(new Entity(house2b,new Vector3f(355f,terrain.getHeightOfTerain(355f,-487),-487),0,0,0,1));
+		entities.add(new Entity(house2b,new Vector3f(427f,terrain.getHeightOfTerain(427f,-495),-495),0,0,0,1));
+		entities.add(new Entity(house2u,new Vector3f(486f,terrain.getHeightOfTerain(486f,-368),-368),0,0,0,1));
+		entities.add(new Entity(house2b,new Vector3f(519f,terrain.getHeightOfTerain(519f,-185),-185),0,0,0,1));
+
+		// Windmill
+		entities.add(new Entity(windmillu,new Vector3f(708f,terrain.getHeightOfTerain(708f,-337f),-337f),0,0,0,1));
+
+
+		// Herb Stall
+		entities.add(new Entity(stall1,new Vector3f(490f,terrain.getHeightOfTerain(490f,-447),-447),0,0,0,1));
+		entities.add(new Entity(stall1,new Vector3f(609f,terrain.getHeightOfTerain(609f,-515),-515),0,0,0,1));
+		entities.add(new Entity(stall,new Vector3f(248f,terrain.getHeightOfTerain(248f,-452),-452),0,0,0,1));
+
+//		entities.add(new Entity(housefull,new Vector3f(580f,terrain.getHeightOfTerain(580f,-468),-468),0,0,0,1));
+
+//		entities.add(new Entity(rock,new Vector3f(387.3f,terrain.getHeightOfTerain(387.3f,-395.2f),-395.2f),0,0,0,10));
 //		entities.add(new Entity(rock,new Vector3f(213.15736f,terrain.getHeightOfTerain(213.15736f,-641.9919f),-641.9919f),0,0,0,10));
 
-		entities.add(new Entity(tree,new Vector3f(213.15736f,terrain.getHeightOfTerain(213.15736f,-641.9919f),-641.9919f),0,0,0,5));
-		entities.add(new Entity(tree,new Vector3f(306.46277f,terrain.getHeightOfTerain(306.46277f,-585.40564f),-585.40564f),0,0,0,5));
-		entities.add(new Entity(tree,new Vector3f(219.85002f,terrain.getHeightOfTerain(219.85002f,-554.98584f),-554.98584f),0,0,0,5));
-		entities.add(new Entity(tree,new Vector3f(145.94952f,terrain.getHeightOfTerain(145.94952f,-606.1742f),-606.1742f),0,0,0,5));
-		entities.add(new Entity(tree,new Vector3f(137.78445f,terrain.getHeightOfTerain(137.78445f,-542.7215f),-542.7215f),0,0,0,5));
-		entities.add(new Entity(tree,new Vector3f(129.4428f,terrain.getHeightOfTerain(129.4428f,-479.5613f),-479.5613f),0,0,0,5));
-		entities.add(new Entity(tree,new Vector3f(28.632921f,terrain.getHeightOfTerain(28.632921f,-530.201f),-530.201f),0,0,0,5));
-		entities.add(new Entity(tree,new Vector3f(80.15097f,terrain.getHeightOfTerain(80.15097f,-503.5026f),-503.5026f),0,0,0,5));
-		entities.add(new Entity(tree,new Vector3f(418.51733f,terrain.getHeightOfTerain(418.51733f,-296.52744f),-296.52744f),0,0,0,5));
+		// Tree
+		entities.add(new Entity(tree,new Vector3f(178f,terrain.getHeightOfTerain(178f,-356),-356),0,0,0,3));
+		entities.add(new Entity(tree,new Vector3f(231f,terrain.getHeightOfTerain(231f,-482),-482),0,0,0,5));
+		entities.add(new Entity(tree,new Vector3f(422f,terrain.getHeightOfTerain(422f,-558),-558),0,0,0,3));
+		entities.add(new Entity(tree,new Vector3f(683f,terrain.getHeightOfTerain(683f,-507),-507),0,0,0,4));
+		entities.add(new Entity(tree,new Vector3f(534f,terrain.getHeightOfTerain(534f,-439),-439),0,0,0,3));
+		entities.add(new Entity(tree,new Vector3f(562f,terrain.getHeightOfTerain(562f,-255),-255),0,0,0,3));
+		entities.add(new Entity(tree,new Vector3f(479f,terrain.getHeightOfTerain(479f,-239),-239),0,0,0,5));
 
-		entities.add(new Entity(tree1,new Vector3f(376.82504f,terrain.getHeightOfTerain(376.82504f,-628.5623f),-628.5623f),0,0,0,3));
-		entities.add(new Entity(tree1,new Vector3f(322.97224f,terrain.getHeightOfTerain(376.82504f,-628.5623f),-698.4444f),0,0,0,3));
-		entities.add(new Entity(tree1,new Vector3f(72.11883f,terrain.getHeightOfTerain(72.11883f,-422.20193f),-422.20193f),0,0,0,3));
-		entities.add(new Entity(tree1,new Vector3f(18.279293f,terrain.getHeightOfTerain(18.279293f,-616.31055f),-616.31055f),0,0,0,3));
-		entities.add(new Entity(tree1,new Vector3f(98.08309f,terrain.getHeightOfTerain(98.08309f,-687.21875f),-687.21875f),0,0,0,3));
-		entities.add(new Entity(tree1,new Vector3f(347.22693f,terrain.getHeightOfTerain(347.22693f,-229.64406f),-229.64406f),0,0,0,3));
-		entities.add(new Entity(tree1,new Vector3f(347.22693f,terrain.getHeightOfTerain(347.22693f,-229.64406f),-229.64406f),0,0,0,3));
+		// Tree 1
+		entities.add(new Entity(tree1,new Vector3f(144f,terrain.getHeightOfTerain(144f,-255),-255),0,0,0,1.5f));
+		entities.add(new Entity(tree1,new Vector3f(346f,terrain.getHeightOfTerain(346f,-567),-567),0,0,0,1.5f));
+		entities.add(new Entity(tree1,new Vector3f(625f,terrain.getHeightOfTerain(625f,-579),-579),0,0,0,1.5f));
+		entities.add(new Entity(tree1,new Vector3f(603f,terrain.getHeightOfTerain(603f,-390),-390),0,0,0,1.5f));
 
-		lights.add(new Light(new Vector3f(274.75735f,terrain.getHeightOfTerain(274.75735f,-553.3781f)+25f,-553.3781f),new Vector3f(0,2,0),new Vector3f(1,0.01f,0.002f)));
-		lights.add(new Light(new Vector3f(293.78223f,terrain.getHeightOfTerain(293.78223f,-202.7974f)+25f,-202.7974f),new Vector3f(2,0,0),new Vector3f(2,0.01f,0.002f)));
-		lights.add(new Light(new Vector3f(312.42526f,terrain.getHeightOfTerain(312.42526f,-428.33685f)+25f,-428.33685f),new Vector3f(0,0,2),new Vector3f(2,0.01f,0.002f)));
-		entities.add(new Entity(lamp,new Vector3f(274.75735f,terrain.getHeightOfTerain(274.75735f,-553.3781f),-553.3781f),0,0,0,1.5f));
-		entities.add(new Entity(lamp,new Vector3f(293.78223f,terrain.getHeightOfTerain(293.78223f,-202.7974f),-202.7974f),0,0,0,1.5f));
-		entities.add(new Entity(lamp,new Vector3f(312.42526f,terrain.getHeightOfTerain(312.42526f,-428.33685f),-428.33685f),0,0,0,1.5f));
 
 
 		Camera camera = new Camera(player);

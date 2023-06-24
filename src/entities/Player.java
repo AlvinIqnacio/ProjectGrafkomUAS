@@ -33,7 +33,7 @@ public class Player extends Entity{
     public void move(Terrain terrain, List<Entity> entities){
         checkInput();
         for (Entity entity : entities) {
-            isCollide = entity.detectCollision(new Vector3D(getPosition().x, getPosition().y+5.5, getPosition().z), entity.getModel().getRawModel(), 3);
+            isCollide = entity.detectCollision(new Vector3D(getPosition().x, getPosition().y, getPosition().z), entity.getModel().getRawModel(), 4);
             if (isCollide) {
                 break;
             }
