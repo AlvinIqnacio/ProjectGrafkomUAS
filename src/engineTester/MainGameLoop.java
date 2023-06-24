@@ -429,7 +429,7 @@ public class MainGameLoop {
 			}
 
 
-			System.out.println(player.getPosition().x +" "+ player.getPosition().y+ " " +player.getPosition().z);
+//			System.out.println(player.getPosition().x +" "+ player.getPosition().y+ " " +player.getPosition().z);
 
 			renderer.renderShadowMap(entities,lights.get(0));
 			renderer.processEntity(player);

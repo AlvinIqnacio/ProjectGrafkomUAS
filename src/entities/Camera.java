@@ -30,6 +30,8 @@ public class Camera {
 	private float minAngle = -90;
 	private float maxAngle = 90;
 
+	private float lastDirectionx;
+	private float lastDirectiony;
 
 	private float cameraHeightFromPlayer = 5;
 	private boolean firstPersonView = false;
@@ -42,6 +44,13 @@ public class Camera {
 	}
 	
 	public void move(Terrain terrain, List<Entity> entities){
+		for (Entity entity : entities) {
+			isCollide = entity.detectCollision(new Vector3D(getPosition().x, getPosition().y, getPosition().z), entity.getModel().getRawModel(), 5);
+			if (isCollide) {
+				System.out.println(true);
+				break;
+			}
+		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_F5)) {
 			minDistance = 0;
 			maxDistance = 0;
@@ -64,13 +73,6 @@ public class Camera {
 		if (position.y<terrain.getHeightOfTerain(position.x,position.z)){
 			position.y = terrain.getHeightOfTerain(position.x,position.z) + 1;
 		}
-		for (Entity entity : entities) {
-			isCollide = entity.detectCollision(new Vector3D(getPosition().x, getPosition().y, getPosition().z), entity.getModel().getRawModel(), 1);
-			if (isCollide) {
-				break;
-			}
-		}
-
 
 	}
 
@@ -94,8 +96,10 @@ public class Camera {
 		float theta = player.getRotY() + angelFromPlayer;
 		float offsetX = (float) (horizontal * Math.sin(Math.toRadians(theta)));
 		float offsetZ = (float) (horizontal * Math.cos(Math.toRadians(theta)));
+
 		position.x = player.getPosition().x - offsetX;
 		position.z = player.getPosition().z - offsetZ;
+
 		position.y = player.getPosition().y + vertical + cameraHeightFromPlayer;
 
 	}
@@ -132,9 +136,22 @@ public class Camera {
 				}
 			}
 		}else {
-			if (Mouse.isButtonDown(0)){
-				float pitchChange= Mouse.getDY() * sensitivityY;
-				pitch -= pitchChange;
+			if (!isCollide) {
+				if (Mouse.isButtonDown(0)) {
+					float pitchChange = Mouse.getDY() * sensitivityY;
+					pitch -= pitchChange;
+					lastDirectiony = pitchChange;
+				}
+			}else {
+				if (Mouse.isButtonDown(0)) {
+					float pitchChange = Mouse.getDY() * sensitivityY;
+					if (pitchChange < 0) {
+						pitch += pitchChange;
+					} else {
+						pitch += pitchChange;
+					}
+				}
+
 			}
 		}
 
@@ -150,13 +167,27 @@ public class Camera {
 				if (Mouse.isButtonDown(0)) {
 					float angleChange = Mouse.getDX() * sensitivityX;
 					angelFromPlayer -= angleChange;
+
 				}
 			}
 		}else {
-			if (Mouse.isButtonDown(0)) {
-				float angleChange = Mouse.getDX() * sensitivityX;
-				angelFromPlayer -= angleChange;
+			if (!isCollide) {
+				if (Mouse.isButtonDown(0)) {
+					float angleChange = Mouse.getDX() * sensitivityX;
+					angelFromPlayer -= angleChange;
+					lastDirectionx = angleChange;
+				}
+			}else {
+				if (Mouse.isButtonDown(0)) {
+					float angleChange = Mouse.getDX() * sensitivityX;
+					if (angleChange<0){
+						angelFromPlayer +=angleChange;
+					}else {
+						angelFromPlayer +=angleChange;
+					}
+				}
 			}
+
 		}
 	}
 	
