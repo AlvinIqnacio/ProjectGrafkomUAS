@@ -178,9 +178,6 @@ public class Entity {
 					vertices.get(indicies.get(i+2)).getPosition().y + position.y,
 					vertices.get(indicies.get(i+2)).getPosition().z + position.z
 			);
-
-
-
 			if (sdfTriangle(p, a, b, c) < thresh) {
 				return true;
 			}

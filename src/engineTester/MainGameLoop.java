@@ -579,9 +579,11 @@ public class MainGameLoop {
 			}
 
 
-			System.out.println(player.getPosition().x +" "+ player.getPosition().y+ " " +player.getPosition().z);
+//			System.out.println(player.getPosition().x +" "+ player.getPosition().y+ " " +player.getPosition().z);
 
 			renderer.renderShadowMap(entities,lights.get(0));
+//			renderer.renderShadowMap(entities,lights.get(1));
+			System.out.println(lights.get(1).getPosition());
 			renderer.processEntity(player);
 			renderer.processTerrain(terrain);
 			renderer.processTerrain(terrain2);
@@ -589,7 +591,17 @@ public class MainGameLoop {
 			for(Entity entity:entities){
 				renderer.processEntity(entity);
 			}
-			renderer.render(lights, camera,player);
+			if(renderer.time>6000 && renderer.time<21000){
+				List<Light> dayLights = new ArrayList<>();
+				dayLights.add(lights.get(0));
+				lamp.getTexture().setUseFakeLighting(false);
+				lampu.getTexture().setUseFakeLighting(false);
+				renderer.render(dayLights, camera,player);
+			}else {
+				lamp.getTexture().setUseFakeLighting(true);
+				lampu.getTexture().setUseFakeLighting(true);
+				renderer.render(lights, camera, player);
+			}
 			guiRenderer.render(guis);
 			DisplayManager.updateDisplay();
 		}
